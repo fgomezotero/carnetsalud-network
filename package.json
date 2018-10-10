@@ -1,0 +1,51 @@
+{
+  "engines": {
+    "composer": "^0.20.1"
+  },
+  "name": "carnetsalud-network",
+  "version": "0.0.5",
+  "description": "Modelado del proceso de emisión y consulta de un carnet de salud",
+  "scripts": {
+    "prepublish": "mkdir -p ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/carnetsalud-network.bna",
+    "pretest": "npm run lint",
+    "lint": "eslint .",
+    "test": "nyc mocha -t 0 test/*.js",
+    "hlf-up": "~/opt/fabric-dev-servers/startFabric.sh && ~/opt/fabric-dev-servers/createPeerAdminCard.sh",
+    "composer-archive-create": "mkdir -p ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/carnetsalud-network.bna",
+    "composer-network-install": "composer network install --card PeerAdmin@hlfv1 --archiveFile dist/carnetsalud-network.bna",
+    "composer-network-start": "composer network start --networkName carnetsalud-network --networkVersion 0.0.5 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card",
+    "composer-network-upgrade": "composer network upgrade -c PeerAdmin@hlfv1 -n carnetsalud-network -V 0.0.5",
+    "composer-card-import": "composer card import --file networkadmin.card",
+    "composer-network-ping": "composer network ping --card admin@carnetsalud-network",
+    "composer-network-list": "composer network list --card admin@carnetsalud-network",
+    "composer-rest-server": "composer-rest-server -c admin@carnetsalud-network -n never -u true",
+    "composer-network-reset": "composer network reset -c admin@carnetsalud-network",
+    "hlf-down": "~/opt/fabric-dev-servers/stopFabric.sh",
+    "poc-teardown": "~/opt/fabric-dev-servers/teardownFabric.sh && composer card delete --card admin@carnetsalud-network && yes | docker volume prune",
+    "poc-seed": "node ./seed.js",
+    "poc-up": "npm run hlf-up && npm run composer-archive-create && npm run composer-network-install && npm run composer-network-start && npm run composer-card-import && npm run composer-network-ping",
+    "poc-upgrade": "npm run composer-archive-create && npm run composer-network-install && npm run composer-network-upgrade && npm run composer-network-ping"
+  },
+  "keywords": [
+    "composer",
+    "composer-network"
+  ],
+  "author": "Franklin Gómez",
+  "email": "fgomezotero@gmail.com",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "composer-admin": "^0.20.1",
+    "composer-cli": "^0.20.1",
+    "composer-client": "^0.20.1",
+    "composer-common": "^0.20.1",
+    "composer-connector-embedded": "^0.20.1",
+    "composer-cucumber-steps": "^0.20.1",
+    "chai": "latest",
+    "chai-as-promised": "latest",
+    "cucumber": "^2.2.0",
+    "eslint": "latest",
+    "nyc": "latest",
+    "mkdirp": "latest",
+    "mocha": "latest"
+  }
+}

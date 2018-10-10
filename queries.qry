@@ -1,0 +1,16 @@
+/** Sample queries for Commodity Trading business network
+*/
+
+query selectAllCarnetSalud {
+  description: "Select all carnet de salud"
+  statement:
+      SELECT org.agesic.salud.Activo_carnetsalud
+       WHERE (cedula == _$cedula)
+}
+
+query selectAllCarnetxInstitucionEmisor {
+  description: "Selecciona todos los carnet de salud emitidos por una institucion especifica"
+  statement:
+      SELECT org.agesic.salud.Activo_carnetsalud
+        WHERE (institucion == _$institucion)
+}
