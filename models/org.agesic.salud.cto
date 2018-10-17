@@ -40,6 +40,8 @@ transaction Transaccion_expedircarnet {
   o String nombre
   o String nacionalidad
   o String fecha_nacimiento
+  o String fecha_expedido
+  o String fecha_valido_hasta
 }
 
 event Evento_carnetexpedido {

@@ -396,6 +396,8 @@ describe('#' + namespace, () => {
         transaction.nombre = 'Nicolas Pence';
         transaction.nacionalidad = 'uruguay';
         transaction.fecha_nacimiento = '1984-12-31';
+        transaction.fecha_expedido = '2018-10-15';
+        transaction.fecha_valido_hasta = '2020-10-15';
         await businessNetworkConnection.submitTransaction(transaction);
 
         // Get the asset.
@@ -425,6 +427,8 @@ describe('#' + namespace, () => {
         transaction.nombre = 'Nicolas Pence';
         transaction.nacionalidad = 'uruguay';
         transaction.fecha_nacimiento = '1984-12-31';
+        transaction.fecha_expedido = '2018-10-15';
+        transaction.fecha_valido_hasta = '2020-10-15';
         await businessNetworkConnection.submitTransaction(transaction).should.be.rejected;
     });
 
@@ -439,6 +443,8 @@ describe('#' + namespace, () => {
         transaction.nombre = 'Nicolas Pence';
         transaction.nacionalidad = 'uruguay';
         transaction.fecha_nacimiento = '1984-12-31';
+        transaction.fecha_expedido = '2018-10-15';
+        transaction.fecha_valido_hasta = '2020-10-15';
         await businessNetworkConnection.submitTransaction(transaction);
 
         // Get the asset.
@@ -468,6 +474,8 @@ describe('#' + namespace, () => {
         transaction.nombre = 'Nicolas Pence';
         transaction.nacionalidad = 'uruguay';
         transaction.fecha_nacimiento = '1984-12-31';
+        transaction.fecha_expedido = '2018-10-15';
+        transaction.fecha_valido_hasta = '2020-10-15';
         await businessNetworkConnection.submitTransaction(transaction).should.be.rejected;
     });
 });

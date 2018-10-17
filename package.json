@@ -3,7 +3,7 @@
     "composer": "^0.20.1"
   },
   "name": "carnetsalud-network",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Modelado del proceso de emisión y consulta de un carnet de salud",
   "scripts": {
     "prepublish": "mkdir -p ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/carnetsalud-network.bna",
@@ -13,8 +13,8 @@
     "hlf-up": "~/opt/fabric-dev-servers/startFabric.sh && ~/opt/fabric-dev-servers/createPeerAdminCard.sh",
     "composer-archive-create": "mkdir -p ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/carnetsalud-network.bna",
     "composer-network-install": "composer network install --card PeerAdmin@hlfv1 --archiveFile dist/carnetsalud-network.bna",
-    "composer-network-start": "composer network start --networkName carnetsalud-network --networkVersion 0.0.5 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card",
-    "composer-network-upgrade": "composer network upgrade -c PeerAdmin@hlfv1 -n carnetsalud-network -V 0.0.5",
+    "composer-network-start": "composer network start --networkName carnetsalud-network --networkVersion 0.0.6 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card",
+    "composer-network-upgrade": "composer network upgrade -c PeerAdmin@hlfv1 -n carnetsalud-network -V 0.0.6",
     "composer-card-import": "composer card import --file networkadmin.card",
     "composer-network-ping": "composer network ping --card admin@carnetsalud-network",
     "composer-network-list": "composer network list --card admin@carnetsalud-network",
